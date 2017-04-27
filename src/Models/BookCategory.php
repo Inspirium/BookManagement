@@ -1,0 +1,16 @@
+<?php
+
+namespace Inspirium\BookManagement\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class BookCategory extends Model {
+
+    protected $table = 'book_categories';
+
+    protected $fillable = ['name', 'description'];
+
+    public function books() {
+        $this->belongsToMany('Inspirium\BookManagement\Models\Book', 'book_category', 'category_id', 'book_id');
+    }
+}
