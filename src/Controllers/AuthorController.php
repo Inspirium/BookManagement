@@ -10,8 +10,8 @@ class AuthorController extends Controller {
     public function showAuthors() {
         $elements = Author::all();
         $columns = [
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name'
+            'first_name' => [ 'title' => 'First Name' ],
+            'last_name' => [ 'title' => 'Last Name' ]
         ];
         $strings = [
             "title" => "Authors",

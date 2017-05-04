@@ -10,7 +10,7 @@ class BookController extends Controller {
     public function showBooks() {
         $elements = Book::all();
         $columns = [
-            'name' => 'Name',
+            'name' => [ 'title' => 'Name' ],
         ];
         $strings = [
             "title" => "Books",
