@@ -4,7 +4,6 @@ namespace Inspirium\BookManagement\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Phoenix\EloquentMeta\MetaTrait;
 
 /**
  * Class Book
@@ -16,9 +15,7 @@ use Phoenix\EloquentMeta\MetaTrait;
  * @property $cover
  */
 class Book extends Model {
-    use MetaTrait, SoftDeletes;
-
-    protected $meta_model = 'Inspirium\BookManagement\Models\BookModelMeta';
+    use SoftDeletes;
 
     protected $fillable = ['title', 'description', 'cover'];
 
@@ -29,10 +26,22 @@ class Book extends Model {
     }
 
     public function categories() {
-        $this->belongsToMany('Inspirium\BookManagement\Models\BookCategory', 'book_category', 'book_id', 'category_id');
+        $this->belongsToMany('Inspirium\BookManagement\Models\BookCategory', 'book_category_pivot', 'book_id', 'category_id');
     }
 
     public function types() {
-        $this->belongsToMany('Inspirium\BookManagement\Models\BookType', 'book_type', 'book_id', 'type_id');
+        $this->belongsToMany('Inspirium\BookManagement\Models\BookType', 'book_type_pivot', 'book_id', 'type_id');
+    }
+
+    public function schools() {
+        $this->belongsToMany('Inspirium\BookManagement\Models\SchoolType', 'book_school_type_pivot', 'book_id', 'school_id');
+    }
+
+    public function subjects() {
+        $this->belongsToMany('Inspirium\BookManagement\Models\SchoolSubject', 'book_school_subject_pivot', 'book_id', 'subject_id');
+    }
+
+    public function biblioteca() {
+        $this->belongsTo('Inspirium\BookManagemet\Models\BookBiblioteca');
     }
 }

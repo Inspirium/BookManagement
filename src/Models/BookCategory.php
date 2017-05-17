@@ -11,6 +11,14 @@ class BookCategory extends Model {
     protected $fillable = ['name', 'description'];
 
     public function books() {
-        $this->belongsToMany('Inspirium\BookManagement\Models\Book', 'book_category', 'category_id', 'book_id');
+        $this->belongsToMany('Inspirium\BookManagement\Models\Book', 'book_category_pivot', 'category_id', 'book_id');
+    }
+
+    public function parent() {
+        $this->belongsTo('Inspirium\BookManagement\Models\BookCategory');
+    }
+
+    public function children() {
+        $this->hasMany('Inspirium\BookManagement\Models\BookCategory', 'parent');
     }
 }

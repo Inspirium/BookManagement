@@ -28,4 +28,8 @@ class BookController extends Controller {
     public function showBook($id) {
 
     }
+
+    public function editBook($id = null) {
+
+    }
 }

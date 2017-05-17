@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBookCategoryTable extends Migration
+class CreateBookTypePivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateBookCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('book_category', function (Blueprint $table) {
+        Schema::create('book_type_pivot', function (Blueprint $table) {
             $table->integer('book_id');
-            $table->integer('category_id');
+            $table->integer('type_id');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateBookCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('book_category');
+        Schema::dropIfExists('book_type_pivot');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBookTypesTable extends Migration
+class CreateBookCategoryPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateBookTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('book_types', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->timestamps();
+        Schema::create('book_category_pivot', function (Blueprint $table) {
+            $table->integer('book_id');
+            $table->integer('category_id');
         });
     }
 
@@ -28,6 +26,6 @@ class CreateBookTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('book_types');
+        Schema::dropIfExists('book_category_pivot');
     }
 }

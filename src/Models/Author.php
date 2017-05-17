@@ -4,7 +4,6 @@ namespace Inspirium\BookManagement\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Phoenix\EloquentMeta\MetaTrait;
 
 /**
  * Class Author
@@ -15,9 +14,7 @@ use Phoenix\EloquentMeta\MetaTrait;
  * @property $image
  */
 class Author extends Model {
-    use MetaTrait, SoftDeletes;
-
-    protected $meta_model = 'Inspirium\BookManagement\Models\AuthorModelMeta';
+    use SoftDeletes;
 
     protected $fillable = ['first_name', 'last_name', 'image'];
 

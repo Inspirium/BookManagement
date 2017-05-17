@@ -29,4 +29,8 @@ class AuthorController extends Controller {
     public function showAuthor($id) {
 
     }
+
+    public function editAuthor($id=null) {
+
+    }
 }
