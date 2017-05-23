@@ -20,7 +20,19 @@ class Author extends Model {
 
     protected $dates = ['deleted_at'];
 
+    protected $visible = ['id', 'first_name', 'last_name', 'image', 'name'];
+
+    protected $appends = ['name'];
+
     public function books() {
         $this->belongsToMany('Inspirium\BookManagement\Models\Book', 'author_book', 'author_id','book_id');
+    }
+
+    public function getNameAttribute() {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function getImageAttribute() {
+        return 'https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg';
     }
 }

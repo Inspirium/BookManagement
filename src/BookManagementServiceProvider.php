@@ -16,6 +16,7 @@ class BookManagementServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/database');
 
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes/api.php');
     }
 
     /**
