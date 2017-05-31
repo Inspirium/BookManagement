@@ -19,6 +19,8 @@ class BookType extends Model {
 
     protected $fillable = ['name', 'designation', 'group_id'];
 
+    protected $visible = ['id', 'name', 'designation'];
+
     public function books() {
         $this->belongsToMany('Inspirium\BookManagement\Models\Book', 'book_type_pivot', 'type_id', 'book_id');
     }

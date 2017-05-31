@@ -17,7 +17,14 @@ class SchoolSubjectGroup extends Model {
 
     protected $fillable = ['name'];
 
-    public function subjects() {
-        $this->hasMany('Inspirium\BookManagement\Models\SchoolSubject', 'group_id');
+    protected $visible = ['id', 'name', 'subjects'];
+    protected $appends = ['subjects'];
+
+    public function children() {
+        return $this->hasMany('Inspirium\BookManagement\Models\SchoolSubject', 'group_id');
+    }
+
+    public function getSubjectsAttribute() {
+        return $this->attributes['subjects'] = $this->getRelationValue('children')->keyBy('id');
     }
 }

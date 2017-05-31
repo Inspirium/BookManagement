@@ -17,8 +17,15 @@ class BookTypeGroup extends Model {
     protected $table = 'book_type_groups';
 
     protected $fillable = ['name'];
+    protected $with = ['children'];
+    protected $appends = ['groups'];
+    protected $visible = ['name', 'id', 'groups'];
 
     public function children() {
-        $this->hasMany('Inspirium\BookManagement\Models\BookType', 'group_id');
+        return $this->hasMany('Inspirium\BookManagement\Models\BookType', 'group_id');
+    }
+
+    public function getGroupsAttribute() {
+        return $this->attributes['groups'] = $this->getRelationValue('children')->keyBy('id');
     }
 }

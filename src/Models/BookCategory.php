@@ -8,17 +8,25 @@ class BookCategory extends Model {
 
     protected $table = 'book_categories';
 
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'description', 'level'];
+
+    protected $appends = ['groups'];
+
+    protected $visible = ['id', 'name', 'description', 'groups'];
 
     public function books() {
         $this->belongsToMany('Inspirium\BookManagement\Models\Book', 'book_category_pivot', 'category_id', 'book_id');
     }
 
     public function parent() {
-        $this->belongsTo('Inspirium\BookManagement\Models\BookCategory');
+        return $this->belongsTo('Inspirium\BookManagement\Models\BookCategory');
     }
 
     public function children() {
-        $this->hasMany('Inspirium\BookManagement\Models\BookCategory', 'parent');
+        return $this->hasMany('Inspirium\BookManagement\Models\BookCategory', 'parent');
+    }
+
+    public function getGroupsAttribute() {
+        return $this->attributes['groups'] = $this->getRelationValue('children')->keyBy('id');
     }
 }
