@@ -18,6 +18,7 @@ class CreateBookCategoriesTable extends Migration
             $table->string('name');
             $table->string('designation')->nullable();
             $table->integer('parent')->nullable();
+            $table->string('coefficient')->nullable();
             $table->timestamps();
         });
     }
