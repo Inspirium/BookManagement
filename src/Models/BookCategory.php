@@ -12,7 +12,7 @@ class BookCategory extends Model {
 
     protected $appends = ['groups'];
 
-    protected $visible = ['id', 'name', 'description', 'groups'];
+    protected $visible = ['id', 'name', 'description', 'groups', 'coefficient'];
 
     public function books() {
         $this->belongsToMany('Inspirium\BookManagement\Models\Book', 'book_category_pivot', 'category_id', 'book_id');
