@@ -27,10 +27,12 @@ class AuthorController extends Controller {
     }
 
     public function showAuthor($id) {
-
+    	$author = Author::firstOrFail($id);
+		return view(config('app.template') . '::books.authors.show', ['author' => $author]);
     }
 
-    public function editAuthor($id=null) {
-
+    public function editAuthor($id = null) {
+		$author = Author::firstOrNew($id);
+		return view(config('app.template') . '::books.authors.edit', ['author' => $author]);
     }
 }
