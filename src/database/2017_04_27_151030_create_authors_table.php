@@ -18,6 +18,10 @@ class CreateAuthorsTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('image')->nullable();
+            $table->string('title')->nullable();
+            $table->string('work')->nullable();
+            $table->string('occupation')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

@@ -5,6 +5,7 @@ Route::group(['namespace' => 'Inspirium\BookManagement\Controllers\Api', 'middle
     Route::group(['prefix' => 'author'], function() {
         Route::get('/{id}', 'AuthorController@getAuthor');
         Route::get('search/{term}', 'AuthorController@search');
+        Route::post('/', 'AuthorController@postAuthor');
 
     });
 
