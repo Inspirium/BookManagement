@@ -12,7 +12,7 @@ use Inspirium\BookManagement\Models\SchoolType;
 class CategoryController extends Controller {
 
     public function getCategories() {
-        $categories = BookCategory::all()->keyBy('id');
+        $categories = BookCategory::where('parent', 0)->get()->keyBy('id');
         return response()->json($categories);
     }
 
