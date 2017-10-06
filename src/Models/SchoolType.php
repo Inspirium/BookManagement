@@ -18,7 +18,11 @@ class SchoolType extends Model {
 
     protected $fillable = ['name', 'designation', 'order'];
 
-    public function books() {
-        $this->belongsToMany('Inspirium\BookManagement\Models\Book', 'book_school_type_pivot', 'school_id', 'book_id');
-    }
+	public function books() {
+		return $this->morphedByMany('Inspirium\BookManagement\Models\Book', 'connection', 'school_type_pivot', 'school_type_id');
+	}
+
+	public function propositions() {
+		return $this->morphedByMany('Inspirium\BookProposition\Models\BookProposition', 'connection', 'school_type_pivot', 'school_type_id');
+	}
 }

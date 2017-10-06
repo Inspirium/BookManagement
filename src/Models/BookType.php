@@ -17,15 +17,27 @@ class BookType extends Model {
 
     protected $table = 'book_types';
 
-    protected $fillable = ['name', 'designation', 'group_id'];
+    protected $fillable = ['name', 'designation'];
 
-    protected $visible = ['id', 'name', 'designation'];
+    protected $appends = ['groups'];
 
-    public function books() {
-        $this->belongsToMany('Inspirium\BookManagement\Models\Book', 'book_type_pivot', 'type_id', 'book_id');
-    }
+	public function books() {
+		return $this->morphedByMany('Inspirium\BookManagement\Models\Book', 'connection', 'book_type_pivot', 'book_type_id');
+	}
 
-    public function group() {
-        $this->belongsTo('Inspirium\BookManagement\Models\BookTypeGroup');
-    }
+	public function propositions() {
+		return $this->morphedByMany('Inspirium\BookProposition\Models\BookProposition', 'connection', 'book_type_pivot', 'book_type_id');
+	}
+
+	public function parent() {
+		return $this->belongsTo('Inspirium\BookManagement\Models\BookType');
+	}
+
+	public function children() {
+		return $this->hasMany('Inspirium\BookManagement\Models\BookType', 'parent_id');
+	}
+
+	public function getGroupsAttribute() {
+		return $this->attributes['groups'] = $this->getRelationValue('children')->keyBy('id');
+	}
 }

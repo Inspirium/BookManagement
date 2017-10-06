@@ -19,6 +19,10 @@ class BookBiblioteca extends Model {
     protected $fillable = ['name', 'designation', 'code'];
 
     public function books() {
-        $this->hasMany('Inspirium\BookManagement\Models\Book', 'biblioteca_id');
+        return $this->morphedByMany('Inspirium\BookManagement\Models\Book', 'connection', 'bliblioteca_pivot', 'biblioteca_id');
+    }
+
+    public function propositions() {
+    	return $this->morphedByMany('Inspirium\BookProposition\Models\BookProposition', 'connection', 'biblioteca_pivot', 'biblioteca_id');
     }
 }

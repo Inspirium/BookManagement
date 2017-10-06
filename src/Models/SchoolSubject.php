@@ -28,13 +28,25 @@ class SchoolSubject extends Model {
 
     protected $table = 'school_subjects';
 
-    protected $fillable = ['name', 'group_id'];
+    protected $appends = ['subjects'];
 
-    public function group() {
-        $this->belongsTo('Inspirium\BookManagement\Models\SchoolSubjectGroup');
-    }
+	public function books() {
+		return $this->morphedByMany('Inspirium\BookManagement\Models\Book', 'connection', 'school_subjects_pivot', 'school_subject_id');
+	}
 
-    public function books() {
-        $this->belongsToMany('Inspirium\BookManagement\Models\Book', 'book_school_subject_pivot', 'subject_id', 'book_id');
-    }
+	public function propositions() {
+		return $this->morphedByMany('Inspirium\BookProposition\Models\BookProposition', 'connection', 'school_subjects_pivot', 'school_subject_id');
+	}
+
+	public function parent() {
+		return $this->belongsTo('Inspirium\BookManagement\Models\SchoolSubject');
+	}
+
+	public function children() {
+		return $this->hasMany('Inspirium\BookManagement\Models\SchoolSubject', 'parent_id');
+	}
+
+	public function getSubjectsAttribute() {
+		return $this->attributes['groups'] = $this->getRelationValue('children')->keyBy('id');
+	}
 }

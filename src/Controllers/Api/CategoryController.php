@@ -5,19 +5,19 @@ namespace Inspirium\BookManagement\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Inspirium\BookManagement\Models\BookBiblioteca;
 use Inspirium\BookManagement\Models\BookCategory;
-use Inspirium\BookManagement\Models\BookTypeGroup;
-use Inspirium\BookManagement\Models\SchoolSubjectGroup;
+use Inspirium\BookManagement\Models\BookType;
+use Inspirium\BookManagement\Models\SchoolSubject;
 use Inspirium\BookManagement\Models\SchoolType;
 
 class CategoryController extends Controller {
 
     public function getCategories() {
-        $categories = BookCategory::where('parent', 0)->get()->keyBy('id');
+        $categories = BookCategory::with('children')->where('parent_id', '=', 0)->get()->keyBy('id');
         return response()->json($categories);
     }
 
     public function getTypes() {
-        $groups = BookTypeGroup::all()->keyBy('id');
+        $groups = BookType::with('children')->whereNull('parent_id')->get()->keyBy('id');
         return response()->json($groups);
     }
 
@@ -27,7 +27,7 @@ class CategoryController extends Controller {
     }
 
     public function getSchoolSubjects() {
-        $subjects = SchoolSubjectGroup::all()->keyBy('id');
+        $subjects = SchoolSubject::with('children')->whereNull('parent_id')->get()->keyBy('id');
         return response()->json($subjects);
     }
 

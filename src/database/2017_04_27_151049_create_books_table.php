@@ -18,7 +18,6 @@ class CreateBooksTable extends Migration
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->string('cover')->nullable();
-            $table->integer('biblioteca_id');
             $table->timestamps();
             $table->softDeletes();
         });
