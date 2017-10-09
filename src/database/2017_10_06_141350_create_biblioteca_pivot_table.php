@@ -13,7 +13,7 @@ class CreateBibliotecaPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('book_biblioteca_pivot', function (Blueprint $table) {
+        Schema::create('biblioteca_pivot', function (Blueprint $table) {
             $table->integer('biblioteca_id');
             $table->integer('connection_id');
             $table->string('connection_type');
@@ -27,6 +27,6 @@ class CreateBibliotecaPivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('book_biblioteca_pivot');
+        Schema::dropIfExists('biblioteca_pivot');
     }
 }

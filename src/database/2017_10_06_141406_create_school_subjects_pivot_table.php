@@ -13,7 +13,7 @@ class CreateSchoolSubjectsPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('book_school_subjects_pivot', function (Blueprint $table) {
+        Schema::create('school_subjects_pivot', function (Blueprint $table) {
             $table->integer('school_subject_id');
             $table->integer('connection_id');
             $table->string('connection_type');
@@ -27,6 +27,6 @@ class CreateSchoolSubjectsPivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('book_school_subjects_pivot');
+        Schema::dropIfExists('school_subjects_pivot');
     }
 }
