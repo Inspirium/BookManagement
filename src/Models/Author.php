@@ -20,8 +20,6 @@ class Author extends Model {
 
     protected $dates = ['deleted_at'];
 
-    protected $visible = ['id', 'first_name', 'last_name', 'image', 'name'];
-
     protected $appends = ['name'];
 
 	public function books() {
@@ -30,6 +28,10 @@ class Author extends Model {
 
 	public function propositions() {
 		return $this->morphedByMany('Inspirium\BookProposition\Models\BookProposition', 'connection', 'author_pivot', 'author_id');
+	}
+
+	public function expenses() {
+		return $this->hasMany('Inspirium\BookProposition\Models\AuthorExpense', 'author_id');
 	}
 
     public function getNameAttribute() {
