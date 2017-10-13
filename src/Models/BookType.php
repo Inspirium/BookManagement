@@ -5,13 +5,24 @@ namespace Inspirium\BookManagement\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class BookType
- * @package Inspirium\BookManagement\Models
+ * Inspirium\BookManagement\Models\BookType
  *
- * @property $id
- * @property $name
- * @property $designation
- * @property $group_id
+ * @property int $id
+ * @property string $name
+ * @property string|null $designation
+ * @property int|null $parent_id
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Inspirium\BookManagement\Models\BookType[] $children
+ * @property-read mixed $groups
+ * @property-read \Inspirium\BookManagement\Models\BookType|null $parent
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\BookType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\BookType whereDesignation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\BookType whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\BookType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\BookType whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\BookType whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class BookType extends Model {
 

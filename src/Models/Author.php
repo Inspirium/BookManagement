@@ -6,12 +6,36 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Author
- * @package Inspirium\BookManagement\Models
+ * Inspirium\BookManagement\Models\Author
  *
- * @property $first_name
- * @property $last_name
- * @property $image
+ * @property int $id
+ * @property string|null $first_name
+ * @property string|null $last_name
+ * @property string|null $image
+ * @property string|null $title
+ * @property string|null $work
+ * @property string|null $occupation
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property \Carbon\Carbon|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Inspirium\BookProposition\Models\AuthorExpense[] $expenses
+ * @property-read mixed $name
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Query\Builder|\Inspirium\BookManagement\Models\Author onlyTrashed()
+ * @method static bool|null restore()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\Author whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\Author whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\Author whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\Author whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\Author whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\Author whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\Author whereOccupation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\Author whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\Author whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\Author whereWork($value)
+ * @method static \Illuminate\Database\Query\Builder|\Inspirium\BookManagement\Models\Author withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\Inspirium\BookManagement\Models\Author withoutTrashed()
+ * @mixin \Eloquent
  */
 class Author extends Model {
     use SoftDeletes;

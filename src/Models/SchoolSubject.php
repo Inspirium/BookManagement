@@ -17,12 +17,24 @@ namespace Inspirium\BookManagement\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class SchoolSubject
- * @package Inspirium\BookManagement\Models
+ * Inspirium\BookManagement\Models\SchoolSubject
  *
- * @property $id
- * @property $name
- * @property $group_id
+ * @property int $id
+ * @property string $name
+ * @property string|null $designation
+ * @property int|null $parent_id
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Inspirium\BookManagement\Models\SchoolSubject[] $children
+ * @property-read mixed $subjects
+ * @property-read \Inspirium\BookManagement\Models\SchoolSubject|null $parent
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\SchoolSubject whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\SchoolSubject whereDesignation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\SchoolSubject whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\SchoolSubject whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\SchoolSubject whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\SchoolSubject whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class SchoolSubject extends Model {
 

@@ -5,13 +5,21 @@ namespace Inspirium\BookManagement\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class BookBiblioteca
- * @package Inspirium\BookManagement\Models
+ * Inspirium\BookManagement\Models\BookBiblioteca
  *
- * @property $id
- * @property $name
- * @property $designation
- * @property $code
+ * @property int $id
+ * @property string $name
+ * @property string $designation
+ * @property string $code
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\BookBiblioteca whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\BookBiblioteca whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\BookBiblioteca whereDesignation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\BookBiblioteca whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\BookBiblioteca whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Inspirium\BookManagement\Models\BookBiblioteca whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class BookBiblioteca extends Model {
     protected $table = 'book_bibliotecas';
