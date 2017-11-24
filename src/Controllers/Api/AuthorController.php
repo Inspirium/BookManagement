@@ -2,7 +2,7 @@
 
 namespace Inspirium\BookManagement\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use Inspirium\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inspirium\BookManagement\Models\Author;
 

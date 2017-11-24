@@ -2,7 +2,7 @@
 
 namespace Inspirium\BookManagement\Controllers;
 
-use App\Http\Controllers\Controller;
+use Inspirium\Http\Controllers\Controller;
 use Inspirium\BookManagement\Models\Author;
 
 class AuthorController extends Controller {

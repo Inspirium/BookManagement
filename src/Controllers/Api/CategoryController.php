@@ -2,7 +2,7 @@
 
 namespace Inspirium\BookManagement\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use Inspirium\Http\Controllers\Controller;
 use Inspirium\BookManagement\Models\BookBiblioteca;
 use Inspirium\BookManagement\Models\BookCategory;
 use Inspirium\BookManagement\Models\BookType;
